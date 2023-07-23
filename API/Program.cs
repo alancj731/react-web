@@ -1,5 +1,10 @@
+using Application.Activities;
+using Application.Core;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using AutoMapper;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +27,11 @@ builder.Services.AddCors(opt =>
         policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
     });
 });
+
+// add Mediator service, dependency injection
+builder.Services.AddMediatR(typeof(List.Handler));
+// add AutoMapper service
+builder.Services.AddAutoMapper(typeof(ProfileMapper).Assembly);
 
 var app = builder.Build();
 

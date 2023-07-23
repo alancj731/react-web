@@ -10,4 +10,9 @@ public class DataContext : DbContext
     {
     }
     public DbSet<Activity> Activities { get; set; } // table name in database
+
+    public Task<Activity> FindAsync(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }
