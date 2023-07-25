@@ -5,9 +5,10 @@ import { Button, Card, Image } from "semantic-ui-react";
 interface Props {
   activity: Activity;
   cancelActivity: () => void;
+  openForm: (id:string) => void;
 }
 
-export default function ActivityDetails({ activity, cancelActivity }: Props) {
+export default function ActivityDetails({ activity, cancelActivity, openForm}: Props) {
   return (
     <Card fluid>
       <Image src={`/assets/categoryimages/${activity.category}.jpg`} />
@@ -22,7 +23,7 @@ export default function ActivityDetails({ activity, cancelActivity }: Props) {
       </Card.Content>
       <Card.Content extra>
         <Button.Group width="2" fluid>
-            <Button basic content="Edit"  color="blue"/>
+            <Button onClick={()=>openForm(activity.id)} basic content="Edit"  color="blue"/>
             <Button onClick={cancelActivity} basic content="Cancel" color="grey"/>
         </Button.Group>
       </Card.Content>
